@@ -67,7 +67,7 @@
         await navigator.share({
           title: noteCopy.title || 'Hisab Note',
           text: `${noteCopy.body}\n\nCalculation Result: ${noteCopy.calculationResult}`,
-          url: window.location.href // Optional: include current page URL if needed
+        //   url: window.location.href // Optional: include current page URL if needed
         });
         console.log('Note shared successfully');
       } catch (error) {
