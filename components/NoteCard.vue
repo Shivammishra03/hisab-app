@@ -2,16 +2,21 @@
     <div class="note-card">
       <input v-model="noteCopy.title" placeholder="Title" class="note-title" />
       <textarea v-model="noteCopy.body" placeholder="Write your hisab here..." class="note-body"></textarea>
-      
+  
       <!-- Calculation Result -->
       <div v-if="noteCopy.calculationResult !== null" class="calculation-result">
         <p>Calculation Result: {{ noteCopy.calculationResult }}</p>
       </div>
-      
+  
       <div class="actions">
         <button @click="calculateAndSave">Calculate</button>
         <button @click="deleteNote">Delete</button>
         <button @click="saveNote">Save</button>
+      </div>
+  
+      <!-- Single Share button -->
+      <div class="share-actions">
+        <button @click="shareNote">Share Note</button>
       </div>
     </div>
   </template>
@@ -54,6 +59,24 @@
   const deleteNote = () => {
     emit('delete', props.index)
   }
+  
+  // Share note using Web Share API
+  const shareNote = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: noteCopy.title || 'Hisab Note',
+          text: `${noteCopy.body}\n\nCalculation Result: ${noteCopy.calculationResult}`,
+          url: window.location.href // Optional: include current page URL if needed
+        });
+        console.log('Note shared successfully');
+      } catch (error) {
+        console.error('Error sharing:', error);
+      }
+    } else {
+      alert('Your browser does not support the Web Share API.');
+    }
+  }
   </script>
   
   <style scoped>
@@ -87,6 +110,10 @@
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+  }
+  .share-actions {
+    margin-top: 15px;
+    text-align: right;
   }
   button {
     padding: 8px 12px;
