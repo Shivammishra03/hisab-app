@@ -1,9 +1,9 @@
 const CACHE_NAME = 'hisab-cache-v1'; // Cache versioning
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
+  './',
+  './index.html',
+  './icons/icon-192x192.png',
+  './icons/icon-512x512.png',
 ];
 
 // Install event: Precache assets
