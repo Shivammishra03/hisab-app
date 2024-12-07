@@ -31,6 +31,7 @@ export default defineNuxtConfig({
       cleanupOutdatedCaches: true,
       clientsClaim: true,
       skipWaiting: true,
+      importScripts: ['/service-worker.js'],
     }
   }
 })
