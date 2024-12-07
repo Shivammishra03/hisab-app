@@ -1,10 +1,12 @@
 <template>
-  <div class="notes-app">
-    <h1>Hisab Notes</h1>
-    <div class="new-note">
-      <button @click="addNote">Add New Note</button>
+  <div class="max-w-4xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-center mb-6 text-blue-600">Hisab Notes</h1>
+    <div class="text-center mb-6">
+      <button @click="addNote" class="bg-blue-500 text-white px-6 py-3 rounded-md shadow-lg hover:bg-blue-600 transition duration-300">
+        Add New Note
+      </button>
     </div>
-    <div class="notes-grid">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <NoteCard
         v-for="(note, index) in notes"
         :key="index"
@@ -49,28 +51,3 @@ const deleteNote = (index) => {
   notes.value.splice(index, 1) // Remove the note from the array
 }
 </script>
-
-<style scoped>
-.notes-app {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-}
-.new-note {
-  margin-bottom: 20px;
-  text-align: center;
-}
-.notes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-button {
-  padding: 10px 15px;
-  cursor: pointer;
-  background-color: #1976d2;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-}
-</style>

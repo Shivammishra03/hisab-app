@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
-  modules: ['@vite-pwa/nuxt'],
+  modules: ['@vite-pwa/nuxt', '@nuxtjs/tailwindcss'],
   devtools: { enabled: true },
 
   pwa: {
@@ -15,12 +15,12 @@ export default defineNuxtConfig({
       start_url: '/',
       icons: [
         {
-          src: '/icons/icon-192x192.png',
+          src: './public/icons/icon-192x192.png',
           sizes: '192x192',
           type: 'image/png',
         },
         {
-          src: '/icons/icon-512x512.png',
+          src: './public/icons/icon-512x512.png',
           sizes: '512x512',
           type: 'image/png',
         }
